@@ -33,8 +33,6 @@
 
     data() {
       return {
-        winner: null,
-        player: null,
         isResetTrigger: false,
       }
     },
@@ -42,13 +40,11 @@
     methods: {
 
       resetBoard() {
-        this.isResetTrigger = !this.isResetTrigger
-        console.log(`Game component: clear button pushed - ${this.isResetTrigger}`)
+        this.isResetTrigger = true
       },
 
       resetTrigger() {
-        this.isResetTrigger = !this.isResetTrigger
-        console.log(`Game component:: Board reseted - ${this.isResetTrigger}`)
+        this.isResetTrigger = false
       }
 
     }

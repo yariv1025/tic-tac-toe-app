@@ -17,7 +17,6 @@
 
       // Clear the game Board
       clearBoard() {
-        console.log("clearButton component: pushed")
         this.$emit("clearBoard")
       }
     }

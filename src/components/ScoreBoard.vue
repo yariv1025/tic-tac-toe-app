@@ -58,6 +58,13 @@
   h1 {
     margin: 0;
     padding: 1rem;
+    color: black;
+  }
+
+  p {
+    margin: 0;
+    padding: 1rem;
+    color: black;
   }
 
   .game-info {
