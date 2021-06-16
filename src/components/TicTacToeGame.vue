@@ -3,11 +3,11 @@
     <div class="game-area">
 
       <div class="game-info">
-        <score-board @updateBoard="updateScore"></score-board>
+        <score-board></score-board>
       </div>
 
-      <tic-tac-toe-board :reset="restart"
-                         @boardRested="boardRested">
+      <tic-tac-toe-board :reset="isResetTrigger"
+                         @boardIsCleared="resetTrigger">
       </tic-tac-toe-board>
 
       <clear-button @clearBoard="resetBoard"></clear-button>
@@ -35,33 +35,23 @@
       return {
         winner: null,
         player: null,
-        isReset: false,
+        isResetTrigger: false,
       }
     },
 
     methods: {
 
       resetBoard() {
-        this.isReset = true
-        console.log(`Game component: clear button pushed`)
+        this.isResetTrigger = !this.isResetTrigger
+        console.log(`Game component: clear button pushed - ${this.isResetTrigger}`)
       },
 
-      boardRested() {
-        this.isReset = false
-        console.log(this.isReset)
-      },
+      resetTrigger() {
+        this.isResetTrigger = !this.isResetTrigger
+        console.log(`Game component:: Board reseted - ${this.isResetTrigger}`)
+      }
 
-      updateScore() {}
-
-    },
-
-    computed: {
-      restart() {
-        console.log("Game component: restart call")
-        return this.isReset
-      },
     }
-
   }
 </script>
 

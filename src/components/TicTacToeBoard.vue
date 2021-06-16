@@ -1,7 +1,7 @@
 <template>
   <div class="tic-tac-toe-board" id="board">
-    <div v-for="(n, i) in 3">
-      <div v-for="(n, j) in 3">
+    <div :key="i.value" v-for="(n, i) in 3">
+      <div :key="j.value" v-for="(n, j) in 3">
 
         <cell @click="play(i, j)"
               :value="board[i][j]">
@@ -41,7 +41,7 @@
     },
 
     methods: {
-
+      // Play
       play(x, y) {
         // Game rounds:
         // 1. check's move
@@ -49,11 +49,6 @@
         // 2. check for win or tie
         // 4. switch turns
         // 5. restart
-
-        // HELP
-        if (this.reset) {
-          this.restart()
-        }
 
         this.placeSymbol(x, y)
         this.hasWinner()
@@ -71,7 +66,7 @@
 
       },
 
-      // places the symbol on the board
+      // Places the symbol on the board
       placeSymbol(x, y) {
 
         if (this.board[x][y] !== '') {
@@ -85,7 +80,7 @@
         this.$forceUpdate()
       },
 
-      // checks for winner
+      // Checks for winner
       hasWinner(x, y) {
 
         // for (let i = 0; i < 3; i++) {
@@ -119,7 +114,6 @@
         //     }
         //   }
         // }
-
         const winningCombination = [
           [0, 1, 2],
           [3, 4, 5],
@@ -130,7 +124,6 @@
           [0, 4, 8],
           [2, 4, 6],
         ]
-
         // For each winning combination - search for a winner
         // winningCombination.forEach((position) => {
         //   const [a, b, c] = position
@@ -149,11 +142,6 @@
         })
       },
 
-      restart() {
-        // Clear our board
-        this.$emit('boardRested')
-      },
-
       // Swap turns between the players
       swapTurns(player) {
         this.$store.commit({
@@ -161,13 +149,24 @@
           playing: player
         })
       },
+    },
 
-      // watch: {
-      //   ['reset']() {
-      //     this.$emit('boardRested')
-      //     setTimeout(() => console.log('board reset'), 500)
-      //   }
-      // }
+    // Clear our board
+    watch: {
+      ['reset']() {
+        // code that's clear the game board
+        for(let i = 0; i < 3; i++){
+          for(let j = 0; j < 3; j++){
+            this.board[i][j] = ''
+          }
+        }
+
+        this.item.find((item) => {
+          item
+        })
+        // this.$emit('boardIsCleared')
+        console.log("Watcher reset")
+      }
     },
 
     computed: {

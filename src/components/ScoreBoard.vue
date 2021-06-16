@@ -3,14 +3,14 @@
     <h1>Scoreboard</h1>
 
     <!--history score-->
-    <div class="Scoreboard" v-for="score in scores">
+    <div class="scores" v-for="score in scores">
       <p class="Player ">{{ score['oWon'] }}</p>
       <p class="Player ">{{ score['xWon'] }}</p>
       <p class="Player ">{{ score['tied'] }}</p>
     </div>
 
     <!--winner-->
-    <div class="Scoreboard" v-for="player in players">
+    <div class="winner" v-for="player in players">
       <label id="winnerMsg" v-if="player['winner']">
         {{player['player']}} WON!
       </label>
