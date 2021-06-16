@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="d-grid gap-2 d-md-block">
-      <button type="button" class="btn btn-dark "  @click="clearBoard()">Clear
-      </button>
-      <button type="button" class="btn btn-dark ">Dark
+      <button type="button"
+              class="btn btn-dark "
+              @click="clearBoard()">Clear
       </button>
     </div>
   </div>
@@ -11,17 +11,17 @@
 
 <script>
   export default {
-    name: "ClearButton",
+    name: "clear-button",
 
     methods: {
 
-      clearBoard() {// TODO: Clear the score Board}
-        this.$emit("clearBoard");
+      // Clear the game Board
+      clearBoard() {
+        console.log("clearButton component: pushed")
+        this.$emit("clearBoard")
       }
     }
   }
 </script>
 
-<style>
-
-</style>
+<style></style>

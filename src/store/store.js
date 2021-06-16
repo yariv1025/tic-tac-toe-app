@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import state from './state'
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
@@ -8,7 +9,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
 
-
+  //state
+  // state: state,
   state: {
     registrations: [],
     users: [
@@ -18,11 +20,13 @@ export const store = new Vuex.Store({
       {id: 4, name: 'Sven', registered: false}
     ],
 
-    scoreBoard: [],
+    scoreBoard: [
+      {oWon: '0', xWon: '0', tied: '0'}
+    ],
     players:[
-      {playerId: 1, wins: ''},
-      {playerId: 2, wins: ''},
-    ]
+      {player: 'x', score: 0, winner: false, isMyTurn: true},
+      {player: 'o', score: 0, winner: false, isMyTurn: false},
+    ],
   },
 
   // returns the state

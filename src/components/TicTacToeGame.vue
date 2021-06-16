@@ -1,16 +1,26 @@
 <template>
-  <div class="game">
-    <ScoreBoard></ScoreBoard>
-    <tic-tac-toe-board :reset="reset"
-                       @boardRested="boardRested()"></tic-tac-toe-board>
-    <ClearButton @clearBoard="resetBoard()"></ClearButton>
+  <div class="game" id="game">
+    <div class="game-area">
+
+      <div class="game-info">
+        <score-board @updateBoard="updateScore"></score-board>
+      </div>
+
+      <tic-tac-toe-board :reset="restart"
+                         @boardRested="boardRested">
+      </tic-tac-toe-board>
+
+      <clear-button @clearBoard="resetBoard"></clear-button>
+
+    </div>
   </div>
 </template>
+
 
 <script>
   import TicTacToeBoard from "./TicTacToeBoard"
   import ClearButton from "./ClearButton"
- import ScoreBoard from "./ScoreBoard"
+  import ScoreBoard from "./ScoreBoard"
 
   export default {
     name: 'tic-tac-toe-game',
@@ -23,26 +33,52 @@
 
     data() {
       return {
-        isReset: false
+        winner: null,
+        player: null,
+        isReset: false,
       }
     },
 
     methods: {
-      resetBoard(){
+
+      resetBoard() {
         this.isReset = true
+        console.log(`Game component: clear button pushed`)
       },
-      boardRested(){
+
+      boardRested() {
         this.isReset = false
-      }
+        console.log(this.isReset)
+      },
+
+      updateScore() {}
+
     },
 
-    computed:{
-      reset(){
+    computed: {
+      restart() {
+        console.log("Game component: restart call")
         return this.isReset
-      }
+      },
     }
 
   }
 </script>
 
-<style></style>
+
+<style>
+  body {
+    margin: 0;
+  }
+  .game {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .game-area {
+    display: flex;
+    flex-flow: column;
+  }
+</style>
