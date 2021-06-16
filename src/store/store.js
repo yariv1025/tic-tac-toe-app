@@ -12,20 +12,14 @@ export const store = new Vuex.Store({
   //state
   // state: state,
   state: {
-    registrations: [],
-    users: [
-      {id: 1, name: 'Max', registered: false},
-      {id: 2, name: 'Anna', registered: false},
-      {id: 3, name: 'Chris', registered: false},
-      {id: 4, name: 'Sven', registered: false}
-    ],
 
     scoreBoard: [
-      {oWon: '0', xWon: '0', tied: '0'}
+      {oWon: '0', xWon: '0', tie: '0'}
     ],
+
     players:[
-      {player: 'x', score: 0, winner: false, isMyTurn: true},
-      {player: 'o', score: 0, winner: false, isMyTurn: false},
+      {player: 'x', score: 0, isMyTurn: true},
+      {player: 'o', score: 0, isMyTurn: false},
     ],
   },
 
