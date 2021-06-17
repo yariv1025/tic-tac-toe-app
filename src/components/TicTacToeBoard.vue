@@ -33,7 +33,8 @@
         inProgress: true,
         stepNumber: 0,
         value: '',
-        winner: null
+        winner: null,
+        previousWinner: null
       }
     },
 
@@ -53,14 +54,14 @@
         this.hasWinner()
 
         if (this.winner !== null && !this.inProgress) {
+          this.previousWinner = this.winner
           this.updateScore()
-          this.$emit('Has winner') // Game ended
-          return
+          // TODO: Game Over - stop the game
         }
         else if (this.winner === null && this.stepNumber === 9) {
+          this.previousWinner = 'Tie'
           this.updateScore()
-          this.$emit('HasTie') // Game ended
-          return
+          // TODO: Game Over - stop the game
         }
       },
 
@@ -73,7 +74,7 @@
           return
         }
 
-        this.board[x][y] = this.currentPlayer['player']
+        this.board[x][y] = this.currentPlayer
         this.stepNumber += 1
         this.$forceUpdate()
         this.swapTurns()
@@ -111,7 +112,6 @@
 
       // Update score board
       updateScore(){
-        // If there's winner
         this.$store.commit({
           type: 'updateScoreBoard',
           player: this.winner
@@ -125,6 +125,13 @@
           playing: player
         })
       },
+
+      resetWinner() {
+        this.$store.commit({
+          type: 'resetWinner',
+          playing: this.previousWinner
+        })
+      }
 
     },
 
@@ -140,6 +147,7 @@
         this.inProgress = true
         this.stepNumber = 0
         this.value = ''
+        this.resetWinner()
         this.winner = null
         this.$emit('boardIsCleared')
       }

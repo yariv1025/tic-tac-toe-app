@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="d-grid gap-2 d-md-block">
-      <button type="button"
-              class="btn btn-dark "
-              @click="clearBoard()">Clear
-      </button>
-    </div>
+
+    <button type="button"
+            class="btn btn-dark "
+            @click="clearBoard()">Clear
+    </button>
+
   </div>
 </template>
 
@@ -23,4 +23,11 @@
   }
 </script>
 
-<style></style>
+<style>
+  .container {
+    flex-wrap: wrap;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+</style>
