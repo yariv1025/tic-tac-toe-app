@@ -1,2 +1,21 @@
-# tic-tac-toe-front-end
-A Tic-Tac-Toe Web application game.
+# job-test-front-end
+
+> A Vue.js project
+
+## How to run the game
+
+#### Clone the projcet
+``` bash
+git clone git@github.com:yariv1025/tic-tac-toe-front-end.git
+```
+
+#### Install dependencies
+``` bash
+npm install
+```
+
+#### Run the game - reload at localhost:8080
+``` bash
+npm run dev
+```
+
