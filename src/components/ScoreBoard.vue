@@ -5,14 +5,14 @@
     <!--history score-->
     <div class="scores" v-for="score in scores">
       <p
-        v-if="score['wasPrevGame'] && (score['previousGameScore'] === 'X' ||
-        score['previousGameScore'] === 'O')">
+        v-if="score['wasPrevGame'] && (score['previousGameWinner'] === 'X' ||
+        score['previousGameWinner'] === 'O')">
         Previous Game Score:
-        {{score['previousGameScore']}} Won
+        {{score['previousGameWinner']}} Won
       </p>
-      <p v-if="score['wasPrevGame'] && score['previousGameScore'] === 'Tied' ">
+      <p v-if="score['wasPrevGame'] && score['previousGameWinner'] === 'Tied' ">
         Previous Game Score:
-        The game {{score['previousGameScore']}}
+        The game {{score['previousGameWinner']}}
       </p>
       <p>O-score: {{ score['oWon'] }}</p>
       <p>X-score: {{ score['xWon'] }}</p>
