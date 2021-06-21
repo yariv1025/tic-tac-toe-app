@@ -122,7 +122,7 @@
       // Update the winner status
       resetWinnerStatus() {
         this.$store.commit({
-          type: 'resetWinner',
+          type: 'resetWinnerStatus',
           playing: this.previousWinner
         })
       },
