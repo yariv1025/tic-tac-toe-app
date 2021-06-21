@@ -5,6 +5,7 @@ const axios = require('axios');
 /* Fetching desirable data*/
 export default {
 
+  // Create a game board schema in our DB
   async setBoard(board) {
     const data = JSON.stringify({
       "board": board
@@ -30,6 +31,7 @@ export default {
 
   },
 
+  // Find and get a game board schema by ID from our DB
   async getBoardId() {
     const config = {
       method: 'get',
@@ -47,6 +49,7 @@ export default {
     }
   },
 
+  // Update the game board schema in our DB
   async updateBoard(board, boardId) {
     const data = JSON.stringify({
       "board": board,

@@ -14,8 +14,7 @@
     name: "clear-button",
 
     methods: {
-
-      // Clear the game Board
+      // Emit event for game Board clearing
       clearBoard() {
         this.$emit("clearBoard")
       }

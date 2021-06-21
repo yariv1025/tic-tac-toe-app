@@ -16,6 +16,8 @@ The cell emits an event if it's clicked and
     },
 
     methods: {
+
+      // Emit event when the cell clicked
       updateCell() {
         this.$emit('click')
       },

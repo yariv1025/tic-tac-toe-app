@@ -5,6 +5,7 @@ const axios = require('axios');
 /* Fetching desirable data*/
 export default {
 
+  // Create a score board schema in our DB
   async saveScore(scores) {
     const data = JSON.stringify({
       "oWon": scores['oWon'],
@@ -34,6 +35,7 @@ export default {
 
   },
 
+  // Find and get a score board schema from our DB
   async getScore() {
     const data = '';
 
