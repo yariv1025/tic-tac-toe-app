@@ -166,11 +166,10 @@
 <style>
   .tic-tac-toe-board {
     flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
     display: grid;
     justify-content: center;
     align-content: center;
     grid-template-columns: repeat(3, auto);
+    padding: 20px;
   }
 </style>

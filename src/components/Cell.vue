@@ -29,10 +29,11 @@ The cell emits an event if it's clicked and
     width: 100px;
     height: 100px;
     background-color: black;
-    border: 1px solid white;
     font-size: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 3px solid #4AADC1;
+    border-radius: 20px 20px 20px 20px;
   }
 </style>

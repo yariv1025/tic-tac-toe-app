@@ -65,32 +65,58 @@
   /*  background-color: white;*/
   /*}*/
 
-  /*h1 {*/
-  /*  margin: 3vmin 0 0;*/
-  /*  padding: 1rem .5rem;*/
-  /*  color: black;*/
-  /*  justify-content: center;*/
-  /*}*/
+  h1 {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 26px;
+    letter-spacing: 4.4px;
+    word-spacing: 3.4px;
+    color: #4AADC1;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: uppercase;
+  }
 
-  /*p {*/
-  /*  margin: 0;*/
-  /*  padding: 1rem;*/
-  /*  color: black;*/
-  /*}*/
+  p {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 18px;
+    letter-spacing: 3.2px;
+    word-spacing: 2.4px;
+    color: #4AADC1;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: none;
+  }
+
+  .winner {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 22px;
+    letter-spacing: 3.2px;
+    word-spacing: 2.4px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+  }
 
   .game-info {
+    flex-wrap: wrap;
+    display: inline;
     margin: 60vmin 0 0;
-    /*padding: 1rem .5rem;*/
+    justify-content: center;
+    align-content: center;
     font-size: 1.25em;
     text-align: center;
-    /*box-shadow: 2.5px 5px 25px white, 0 1px 6px white;*/
-    /*text-shadow: 0 0 1px #fff, 0 2px 5px #fff5;*/
-    /*border-radius: .5rem;*/
     backdrop-filter: blur(10px);
-    /*background: black;*/
     background-blend-mode: exclusion;
     color: white;
-    justify-content: center;
+    padding: 30px;
+    /*text-shadow: 5px 1px 3px #7791A4;*/
   }
 
 </style>
