@@ -40,11 +40,11 @@
     methods: {
 
       resetBoard() {
-        this.isResetTrigger = true
+        this.isResetTrigger = true;
       },
 
       resetTrigger() {
-        this.isResetTrigger = false
+        this.isResetTrigger = false;
       }
 
     }

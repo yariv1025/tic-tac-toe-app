@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
     }],
 
     scoreBoard: [
-      {oWon: 0, xWon: 0, tie: 0, previousGameScore: null , wasPrevGame: false}
+      {oWon: 0, xWon: 0, tie: 0, previousGameWinner: null , wasPrevGame: false}
     ],
 
   },

@@ -4,15 +4,12 @@
 
     <!--history score-->
     <div class="scores" v-for="score in scores">
-      <p
-        v-if="score['wasPrevGame'] && (score['previousGameScore'] === 'X' ||
-        score['previousGameScore'] === 'O')">
-        Previous Game Score:
-        {{score['previousGameScore']}} Won
+      <p v-if="score['wasPrevGame'] && (score['previousGameWinner'] === 'X' ||
+        score['previousGameWinner'] === 'O')">
+        Previous Game Score: {{score['previousGameWinner']}} Won
       </p>
-      <p v-if="score['wasPrevGame'] && score['previousGameScore'] === 'Tied' ">
-        Previous Game Score:
-        The game {{score['previousGameScore']}}
+      <p v-if="score['wasPrevGame'] && score['previousGameWinner'] === 'Tied' ">
+        Previous Game Score: The game {{score['previousGameWinner']}}
       </p>
       <p>O-score: {{ score['oWon'] }}</p>
       <p>X-score: {{ score['xWon'] }}</p>
@@ -21,8 +18,8 @@
 
     <!--winner-->
     <div class="winner" v-for="player in players">
-      <label v-if="player['isOWin']">{{player['playerO']}} won!</label>
-      <label v-if="player['isXWin']">{{player['playerX']}} won!</label>
+      <label v-if="player['isOWin']">{{ player['playerO'] }} won!</label>
+      <label v-if="player['isXWin']">{{ player['playerX'] }} won!</label>
       <label v-if="player['tie']">The game tied!</label>
     </div>
 

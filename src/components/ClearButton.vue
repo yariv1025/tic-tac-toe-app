@@ -2,8 +2,7 @@
   <div class="container">
 
     <button type="button"
-            class="myButton"
-            :style
+            class="btn btn-dark "
             @click="clearBoard()">Clear
     </button>
 
@@ -11,17 +10,16 @@
 </template>
 
 <script>
-export default {
-  name: "clear-button",
+  export default {
+    name: "clear-button",
 
-  methods: {
-
-    // Clear the game Board
-    clearBoard() {
-      this.$emit("clearBoard")
+    methods: {
+      // Emit event for game Board clearing
+      clearBoard() {
+        this.$emit("clearBoard")
+      }
     }
   }
-}
 </script>
 
 <style>
