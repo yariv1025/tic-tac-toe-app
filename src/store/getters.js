@@ -2,7 +2,6 @@ export default {
 
   /*Return scores*/
   scores(state){
-    // TODO: get the score of the previous games from mongoDB
     return state.scoreBoard
   },
 
