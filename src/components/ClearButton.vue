@@ -2,7 +2,7 @@
   <div class="container">
 
     <button type="button"
-            class="btn btn-dark "
+            class="myButton"
             @click="clearBoard()">Clear
     </button>
 
