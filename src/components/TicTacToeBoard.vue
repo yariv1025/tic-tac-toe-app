@@ -58,6 +58,24 @@ export default {
       this.isGameOver();
     },
 
+   //
+   //  // Checks for difference between this.board and this.previousBoard
+   // isBoardDiff() {
+   //    const boardCell = [
+   //      [[0, 0], [0, 1], [0, 2]],
+   //      [[1, 0], [1, 1], [1, 2]],
+   //      [[2, 0], [2, 1], [2, 2]]
+   //    ];
+   //
+   //    return boardCell.forEach((positions) => {
+   //      const [[a0, a1], [b0, b1], [c0, c1]] = positions;
+   //
+   //      return this.board[a0][a1] !== this.previousBoard[a0][a1] ||
+   //        this.board[b0][b1] !== this.previousBoard[b0][b1] ||
+   //        this.board[c0][c1] !== this.previousBoard[c0][c1];
+   //    });
+   //  },
+
     // Places 'X' or 'O' symbol on the board
     placeSymbol(x, y) {
 
@@ -134,7 +152,6 @@ export default {
         this.previousBoard = this.board;
       } else {
         // TODO: (else if) -> Check for board changes
-        this.previousBoard = this.board;
         const boardId = await boardabale.getBoardId();
         await boardabale.updateBoard(this.board, boardId);
       }
@@ -169,7 +186,6 @@ export default {
       this.value = '';
       this.resetWinnerStatus();
       this.winner = null;
-      this.firstGame = true;
       this.$emit('boardIsCleared')
     }
   },
