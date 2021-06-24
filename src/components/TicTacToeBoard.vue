@@ -1,8 +1,8 @@
 <template>
   <div class="tic-tac-toe-board" id="board">
 
-    <div :key="i.value" v-for="(n, i) in 3">
-      <div :key="j.value" v-for="(n, j) in 3">
+    <div v-for="(n, i) in 3">
+      <div v-for="(n, j) in 3">
 
         <cell @click="play(i, j)"
               :value="board[i][j]">
@@ -35,10 +35,11 @@ export default {
       previousBoard: [],
       inProgress: true,
       stepNumber: 0,
-      value: '',
       winner: null,
       previousWinner: null,
-      firstGame: true
+      firstMove: true,
+      nextMove: null,
+      boardId: null
     }
   },
 
@@ -52,29 +53,21 @@ export default {
     // 2. check for win or tie
     // 3. update score, winner / tie
     async play(x, y) {
-      this.placeSymbol(x, y);
-      await this.saveBoard();
-      this.hasWinner();
-      this.isGameOver();
-    },
+      this.nextMove = this.placeSymbol(x, y);
 
-   //
-   //  // Checks for difference between this.board and this.previousBoard
-   // isBoardDiff() {
-   //    const boardCell = [
-   //      [[0, 0], [0, 1], [0, 2]],
-   //      [[1, 0], [1, 1], [1, 2]],
-   //      [[2, 0], [2, 1], [2, 2]]
-   //    ];
-   //
-   //    return boardCell.forEach((positions) => {
-   //      const [[a0, a1], [b0, b1], [c0, c1]] = positions;
-   //
-   //      return this.board[a0][a1] !== this.previousBoard[a0][a1] ||
-   //        this.board[b0][b1] !== this.previousBoard[b0][b1] ||
-   //        this.board[c0][c1] !== this.previousBoard[c0][c1];
-   //    });
-   //  },
+      // Check if there is a winner and if the game is over
+      if (this.stepNumber >= 5 ) {
+        this.hasWinner();
+        this.isGameOver();
+        // TODO: If there is a winner OR the game is over -> save the board state and STOP the game.
+      }
+      // Check if a step has been taken
+      if (this.nextMove) {
+        this.swapTurns()
+        await this.saveBoard();
+      }
+
+    },
 
     // Places 'X' or 'O' symbol on the board
     placeSymbol(x, y) {
@@ -82,17 +75,17 @@ export default {
       // Invalid move - No action will be taken
       if (this.board[x][y] !== null) {
         console.log("Invalid move");
-        return
+        return false
       }
 
       this.board[x][y] = this.currentPlayer;
       this.stepNumber += 1;
       this.$forceUpdate();
-      this.swapTurns()
+      return true
     },
 
     // Checks for winner, for each winning combination
-    hasWinner(x, y) {
+    hasWinner() {
 
       const winningCombination = [
         [[0, 0], [0, 1], [0, 2]],
@@ -146,14 +139,13 @@ export default {
 
     // Saving the current state of the board
     async saveBoard() {
-      if (this.firstGame) {
+      if (this.firstMove) {
         await boardabale.setBoard(this.board);
-        this.firstGame = false;
-        this.previousBoard = this.board;
-      } else {
-        // TODO: (else if) -> Check for board changes
-        const boardId = await boardabale.getBoardId();
-        await boardabale.updateBoard(this.board, boardId);
+        this.boardId = await boardabale.getBoardId();
+        this.firstMove = false;
+      }
+      else {
+        await boardabale.updateBoard(this.board, this.boardId);
       }
     },
 
@@ -169,7 +161,6 @@ export default {
         // TODO: Game Over - stop the game
       }
     }
-
   },
 
   // LISTENER - Clear our board when is state changed
@@ -186,6 +177,7 @@ export default {
       this.value = '';
       this.resetWinnerStatus();
       this.winner = null;
+      this.previousWinner = null;
       this.$emit('boardIsCleared')
     }
   },
