@@ -2,7 +2,7 @@ import {ApiUrlService} from '../modules/ApiUrlService'
 
 const axios = require('axios');
 
-/* Fetching desirable data*/
+// Axios connection (calls) to the back-end
 export default {
 
   // Create a game board schema in our DB

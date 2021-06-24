@@ -2,7 +2,7 @@ import {ApiUrlService} from '../modules/ApiUrlService'
 
 const axios = require('axios');
 
-/* Fetching desirable data*/
+// Axios connection (calls) to the back-end
 export default {
 
   // Create a score board schema in our DB
@@ -10,7 +10,7 @@ export default {
     const data = JSON.stringify({
       "oWon": scores['oWon'],
       "xWon": scores['xWon'],
-      "tie": scores['tie'],
+      "isTie": scores['isTie'],
       "previousGameWinner": scores['previousGameWinner'],
       "wasPrevGame": scores['wasPrevGame']
     });
