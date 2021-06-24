@@ -28,28 +28,33 @@ export default {
       state.scoreBoard[0]['oWon'] += 1
     }
     else {
-      state.players[0]['tie'] += 1
+      state.players[0]['isTie'] += 1
       state.scoreBoard[0]['tie'] += 1
     }
+
+    state.players[0]['wasPrevGame'] = true;
   },
 
   /*Reset all variables that indicate a win*/
   resetWinnerStatus(state, payload) {
-
-    if(state.players[0]['playerX'] === payload['playing']) {
-      state.players[0]['isXWin'] = false
-      state.scoreBoard[0]['previousGameWinner'] = state.players[0]['playerX']
+    if (state.players[0]['playerX'] === payload['playing']) {
+      state.players[0]['isXWin'] = false;
+      state.scoreBoard[0]['previousGameWinner'] = state.players[0]['playerX'];
     }
     else if (state.players[0]['playerO'] === payload['playing']){
-        state.players[0]['isOWin'] = false
-        state.scoreBoard[0]['previousGameWinner'] = state.players[0]['playerO']
+        state.players[0]['isOWin'] = false;
+        state.scoreBoard[0]['previousGameWinner'] = state.players[0]['playerO'];
       }
-    else {
-          state.players[0]['tie'] = 0
-          state.scoreBoard[0]['previousGameWinner'] = 'Tied'
+    else if (payload['playing'] === 'Tie') {
+          state.players[0]['isTie'] = 0;
+          state.scoreBoard[0]['previousGameWinner'] = 'Tied';
+    }
+    else if ( state.scoreBoard[0]['previousGameWinner'] === null) {
+      state.players[0]['wasPrevGame'] = false;
+      state.scoreBoard[0]['wasPrevGame'] = false;
     }
 
-    state.scoreBoard[0]['wasPrevGame'] = true
+    state.scoreBoard[0]['wasPrevGame'] = true;
   }
 
 }

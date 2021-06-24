@@ -13,17 +13,19 @@ export const store = new Vuex.Store({
   // state: state,
   state: {
     players: [{
-      oWon: 0,
-      xWon: 0,
-      tie: 0,
+      Tie: 0,
+      isTie: false,
       playerX: 'X',
       scoreX: 0,
+      xWon: 0,
       isXTurn: true,
       isXWin: false,
       playerO: 'O',
       scoreO: 0,
+      oWon: 0,
       isOTurn: false,
       isOWin: false,
+      wasPrevGame: null,
     }],
 
     scoreBoard: [
