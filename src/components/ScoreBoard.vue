@@ -20,7 +20,8 @@
     <div class="winner" v-for="player in players">
       <label v-if="player['isOWin']">{{ player['playerO'] }} won!</label>
       <label v-if="player['isXWin']">{{ player['playerX'] }} won!</label>
-      <label v-if="player['tie']">The game tied!</label>
+      <label v-if="player['isTie']">The game tied!</label>
+      <label v-if="player['wasPrevGame'] === false">No previous games!</label>
     </div>
 
   </div>
