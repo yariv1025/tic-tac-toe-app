@@ -5,6 +5,8 @@
       <div v-for="(n, j) in 3">
 
         <cell @click="play(i, j)"
+              @cellBlocked="raiseMessage"
+              :game-over="gameOver"
               :value="board[i][j]">
         </cell>
       </div>
@@ -39,7 +41,8 @@ export default {
       previousWinner: null,
       firstMove: true,
       nextMove: null,
-      boardId: null
+      boardId: null,
+      gameOver: null
     }
   },
 
@@ -59,7 +62,6 @@ export default {
       if (this.stepNumber >= 5 ) {
         this.hasWinner();
         this.isGameOver();
-        // TODO: If there is a winner OR the game is over -> save the board state and STOP the game.
       }
       // Check if a step has been taken
       if (this.nextMove) {
@@ -150,16 +152,30 @@ export default {
     },
 
     // Checks if the game is over (update the previous winner) and stop the game
+    // TODO: If there is a winner OR the game is over -> save the board state and STOP the game.
     isGameOver() {
       if (this.winner !== null && !this.inProgress) {
         this.previousWinner = this.winner;
         this.updateScore();
-        // TODO: Game Over - stop the game
+        this.gameOver = true;
+        return true;
+        //Game Over
+
       } else if (this.winner === null && this.stepNumber === 9) {
         this.previousWinner = 'Tie';
         this.updateScore();
-        // TODO: Game Over - stop the game
+        this.gameOver = true;
+        return true;
+        //Game Over
       }
+      else {
+        return false;
+        //Game is not Over
+      }
+    },
+
+    raiseMessage() {
+      console.log("Cell blocked")
     }
   },
 
@@ -171,14 +187,15 @@ export default {
         Array(3).fill(null),
         Array(3).fill(null),
         Array(3).fill(null)
-      ]
+      ];
       this.inProgress = true;
       this.stepNumber = 0;
       this.value = '';
       this.resetWinnerStatus();
       this.winner = null;
       this.previousWinner = null;
-      this.$emit('boardIsCleared')
+      this.gameOver = false;
+      this.$emit('boardIsCleared');
     }
   },
 
