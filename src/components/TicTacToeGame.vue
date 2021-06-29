@@ -56,6 +56,7 @@
   body {
     margin: 0;
   }
+
   .game {
     background: #000000;
     background: -moz-linear-gradient(top, #000000 0%, #203542 45%, #2F6084 100%);
@@ -66,6 +67,7 @@
     justify-content: center;
     align-items: center;
   }
+
   .game-area {
     display: flex;
     flex-flow: column;
