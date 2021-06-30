@@ -8,7 +8,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vuetify      from "vuetify"
-import {store} from './store/store'
+import {store}      from './store/store'
 
 Vue.use(BootstrapVue)
 Vue.use(Vuetify)
