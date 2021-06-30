@@ -16,60 +16,6 @@
   </div>
 </template>
 
+<script src="../js/TicTacToeGame.js"></script>
 
-<script>
-  import TicTacToeBoard from "./TicTacToeBoard"
-  import ClearButton from "./ClearButton"
-  import ScoreBoard from "./ScoreBoard"
-
-  export default {
-    name: 'tic-tac-toe-game',
-
-    components: {
-      TicTacToeBoard,
-      ClearButton,
-      ScoreBoard
-    },
-
-    data() {
-      return {
-        isResetTrigger: false,
-      }
-    },
-
-    methods: {
-
-      resetBoard() {
-        this.isResetTrigger = true;
-      },
-
-      resetTrigger() {
-        this.isResetTrigger = false;
-      }
-
-    }
-  }
-</script>
-
-
-<style>
-  body {
-    margin: 0;
-  }
-
-  .game {
-    background: #000000;
-    background: -moz-linear-gradient(top, #000000 0%, #203542 45%, #2F6084 100%);
-    background: -webkit-linear-gradient(top, #000000 0%, #203542 45%, #2F6084 100%);
-    background: linear-gradient(to bottom, #000000 0%, #203542 45%, #2F6084 100%);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .game-area {
-    display: flex;
-    flex-flow: column;
-  }
-</style>
+<style src="../css/TicTacToeGame.css"></style>
